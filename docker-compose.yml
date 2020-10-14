@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build: ./dockerweb
+    image: dockerweb
+    container_name: dockerwebcontainer
+    ports:
+      - "80:80"
+    links:
+      - api
+  api:
+    build: ./dockerapi
+    image: dockerapi
+    container_name: dockerapicontainer
+    ports:
+      - "81:80"
+
+
+
+            
