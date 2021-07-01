@@ -4,6 +4,7 @@ services:
   web:
     build: ./dockerweb
     image: dockerweb
+    #image: pankajsingh23/dockerweb
     container_name: dockerwebcontainer
     ports:
       - "80:80"
@@ -12,6 +13,7 @@ services:
   api:
     build: ./dockerapi
     image: dockerapi
+    #image: pankajsingh23/dockerapi
     container_name: dockerapicontainer
     ports:
       - "81:80"

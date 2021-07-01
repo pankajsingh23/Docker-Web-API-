@@ -20,7 +20,7 @@ namespace DockerWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
-        private string URL = "http://localhost:81/weatherforecast";
+        private string APIURL;//= "http://{dockerapicontainer}/api/weatherforecast";
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
@@ -28,7 +28,8 @@ namespace DockerWeb.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Index(string servicename)
         {
             //try
             //{
@@ -41,7 +42,16 @@ namespace DockerWeb.Controllers
             //}
             try
             {
-                var model = MakeAPICall<WeatherForecast[]>(_configuration["AppSettings:APIURL"], false);
+                if (!string.IsNullOrWhiteSpace(servicename))
+                {
+                    APIURL = $"http://{servicename}/api/weatherforecast";
+                }
+                else
+                {
+                    APIURL = _configuration["AppSettings:APIURL"];
+                }
+                ViewData["APIURL"] = APIURL;
+                var model = MakeAPICall<WeatherForecast[]>(APIURL, false);
                 ViewData["Summary"] = model[0].Summary;
             }
             catch (Exception ex)
