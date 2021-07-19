@@ -1,22 +1,35 @@
 version: '3'
 
+#docker volume create --name=aksshare
+
+volumes:
+ aksshare:
+   external: true
 services:
   web:
-    build: ./dockerweb
-    image: dockerweb
-    #image: pankajsingh23/dockerweb
+    #build: ./dockerweb
+    #image: dockerweb
+    image: pankajsingh23/dockerweb
     container_name: dockerwebcontainer
     ports:
       - "80:80"
+    volumes:
+      - aksshare:/app/config      
     links:
       - api
   api:
-    build: ./dockerapi
-    image: dockerapi
-    #image: pankajsingh23/dockerapi
+    #build: ./dockerapi
+    #image: dockerapi
+    image: pankajsingh23/dockerapi
     container_name: dockerapicontainer
     ports:
       - "81:80"
+    volumes:
+      - aksshare:/app/config
+      #- "./data:/data:rw"    
+      
+# volumes:
+  # aksshare:      
 
 
 

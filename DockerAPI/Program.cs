@@ -18,6 +18,11 @@ namespace DockerAPI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(c =>
+                {
+                    //c.AddJsonFile("appsettings-copy.json", optional: true, reloadOnChange: true);
+                    c.AddJsonFile("config/appsettings.json", optional: true, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
