@@ -20,7 +20,7 @@ namespace DockerAPI.Controllers
 
         private static readonly string[] Cities = new[]
         {
-            "Delhi", "Mumbai", "Kolkata", "Chennai", "Bengaluru", "Hyderabad"
+            "Delhi", "Mumbai", "Kolkata", "Chennai", "Bengaluru", "Hyderabad", "Noida"
         };
 
         public TestController(ILogger<TestController> logger, IConfiguration configuration)
@@ -34,7 +34,7 @@ namespace DockerAPI.Controllers
         public IEnumerable<City> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 6).Select(index => new City
+            return Enumerable.Range(1, 7).Select(index => new City
             {
                 Name = Cities[rng.Next(Cities.Length)]
             })
