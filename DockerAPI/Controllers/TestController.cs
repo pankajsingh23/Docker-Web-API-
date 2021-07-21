@@ -20,7 +20,7 @@ namespace DockerAPI.Controllers
 
         private static readonly string[] Cities = new[]
         {
-            "Delhi", "Mumbai", "Kolkata", "Chennai", "Bengaluru"
+            "Delhi", "Mumbai", "Kolkata", "Chennai", "Bengaluru", "Hyderabad"
         };
 
         public TestController(ILogger<TestController> logger, IConfiguration configuration)
