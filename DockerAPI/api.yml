@@ -16,6 +16,7 @@ spec:
       containers:
       - name: dockerapicontainer
         image: pankajsingh23/dockerapi
+        #imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---

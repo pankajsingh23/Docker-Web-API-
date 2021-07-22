@@ -16,6 +16,7 @@ spec:
       containers:
       - name: dockerwebcontainer
         image: pankajsingh23/dockerweb
+        #imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
